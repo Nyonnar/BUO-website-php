@@ -1,0 +1,26 @@
+ALREADY ADDED
+- Add to cart
+- Display products
+- Update quantity in cart
+- delete product in cart
+- display all products
+- search
+- display specific category
+- insert product / category
+- auto compute of total and subtotal
+- display how many items are in the cart
+- display total
+- working register form
+
+TO EDIT
+- log in form
+- UI
+
+TO ADD
+- checkout
+- payment
+- feedback / rating system
+- product info
+- view more logic
+- seller page and functionalty
+- Admin page and functionality
