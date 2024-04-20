@@ -83,7 +83,7 @@ if (isset($_POST['user_register'])) {
                     <div class="form-outline mb-4">
                         <label for="user_email" class="form-label">Email</label>
                         <input type="email" id="user_email" name="user_email" class="form-control"
-                            placeholder="Enter emails" autocomplete="off" required
+                            placeholder="Enter emailsss" autocomplete="off" required
                             value="<?php echo htmlspecialchars($user_email); ?>" />
                     </div>
 
