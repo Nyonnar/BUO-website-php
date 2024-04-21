@@ -44,7 +44,7 @@ session_start();
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Account</a>
+                            <a class="nav-link" href="./USERS_AREA/profile.php">Account</a>
                         </li>
 
                         <li class="nav-item">
