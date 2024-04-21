@@ -1,6 +1,8 @@
 <?php
 include ('INCLUDES/connect.php');
 include ('FUNCTIONS/common_function.php');
+
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +44,7 @@ include ('FUNCTIONS/common_function.php');
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Account</a>
+                            <a class="nav-link" href="./USERS_AREA/profile.php">Account</a>
                         </li>
 
                         <li class="nav-item">
@@ -86,7 +88,7 @@ include ('FUNCTIONS/common_function.php');
                 } else {
                     echo "
                     <li class='nav-item'>
-                        <a class='nav-link' href='#'>Welcome" . $_SESSION['username'] . "</a>
+                        <a class='nav-link' href='#'>Welcome, " . $_SESSION['username'] . "!</a>
                     </li>";
                 }
 

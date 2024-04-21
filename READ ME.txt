@@ -11,9 +11,12 @@ ALREADY ADDED
 - display how many items are in the cart
 - display total
 - working register form
+- working log in form
+- log out & user display name
+- view products - admin
+- fetching of data on edit - admin
 
 TO EDIT
-- log in form
 - UI
 
 TO ADD
