@@ -26,7 +26,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href='admin_index.php?delete_products=<?php echo $category_id ?>' class='text-dark'>
+                    <a href='admin_index.php?delete_categories=<?php echo $category_id ?>' class='text-dark'>
                         <i class='fa-solid fa-trash'></i>
                     </a>
                 </td>

@@ -86,6 +86,9 @@ include ('../INCLUDES/connect.php');
         if (isset($_GET['edit_categories'])) {
             include ('edit_categories.php');
         }
+        if (isset($_GET['delete_categories'])) {
+            include ('delete_categories.php');
+        }
         ?>
     </div>
 
