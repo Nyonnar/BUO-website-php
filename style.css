@@ -14,3 +14,9 @@
   height: 250px;
   object-fit: contain;
 }
+
+.product_img {
+  /* contain the image */
+  width: 10%;
+  object-fit: contain;
+}
