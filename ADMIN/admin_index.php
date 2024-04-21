@@ -1,3 +1,7 @@
+<?php
+include ('../INCLUDES/connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +52,8 @@
                 <div class="button text-center">
                     <button><a href="insert_products.php" class="nav-link text-dark bg-white my-2">Insert
                             products</a></button>
-                    <button><a href="admin_index.php?view_products" class="nav-link text-dark bg-white my-2">View products</a></button>
+                    <button><a href="admin_index.php?view_products" class="nav-link text-dark bg-white my-2">View
+                            products</a></button>
                     <button><a href="admin_index.php?insert_category" class="nav-link text-dark bg-white my-2">Insert
                             categories</a></button>
                     <button><a href="#" class="nav-link text-dark bg-white my-2">View categories</a></button>
@@ -70,10 +75,10 @@
         }
         ?>
     </div>
-    
+
 
     <?php
-    include('../INCLUDES/footer.php');
+    include ('../INCLUDES/footer.php');
     ?>
 
 
