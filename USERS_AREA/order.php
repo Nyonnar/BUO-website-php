@@ -44,5 +44,12 @@ invoice_number, total_products, order_date, order_status) VALUES
         echo "<script>alert('Order submitted')</script>";
         echo "<script>window.open('profile.php', '_self')</script>";
     }
+
+    $insert_pending_orders = "INSERT INTO `orders_pending` (user_id, invoice_number, product_id, quantity, order_status)
+    VALUES ($user_id, $invoice_number, $product_id, $quantity, '$status')";
+    $result_pending_orders = mysqli_query($_con, $insert_pending_orders);
+
+    $result_cart = "DELETE FROM `cart_details` WHERE ip_address='$get_ip_address'";
+    $result_delete = mysqli_query($_con, $insert_pending_orders);
 }
 ?>
