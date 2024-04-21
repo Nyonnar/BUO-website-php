@@ -2,8 +2,6 @@
 include ('../INCLUDES/connect.php');
 include ('../FUNCTIONS/common_function.php');
 
-session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,28 +53,55 @@ if (isset($_POST['user_login'])) {
     $user_username = $_POST['user_username'];
     $user_password = $_POST['user_password'];
 
-    if (!isset($_con) ||!mysqli_ping($_con)) {
+    if (!isset($_con) || !mysqli_ping($_con)) {
         echo "<script>alert('Error: Database connection failed!')</script>";
         exit;
     }
 
     $select_query = "SELECT * FROM `user_table` WHERE username='$user_username'";
     $result = mysqli_query($_con, $select_query);
+    $row_count = mysqli_num_rows($result);
+    $row_data = mysqli_fetch_assoc($result);
+    $user_ip = getIPAddress();
     if (!$result) {
-        echo "<script>alert('Error: ". mysqli_error($_con). "')</script>";
+        echo "<script>alert('Error: " . mysqli_error($_con) . "')</script>";
         exit;
     }
 
-    $row_count = mysqli_num_rows($result);
-    if ($row_count == 0) {
-        echo "<script>alert('Error: Username not found!')</script>";
-    } else {
-        $row_data = mysqli_fetch_assoc($result);
-        if (!password_verify($user_password, $row_data["user_password"])) {
-            echo "<script>alert('Error: Invalid password!')</script>";
+    $select_cart_query = "SELECT * FROM `cart_details` WHERE ip_address='$user_ip'";
+    $select_cart = mysqli_query($_con, $select_cart_query);
+    $row_count_cart = mysqli_num_rows($select_cart);
+    if ($row_count > 0) {
+        $_SESSION['username'] = $user_username;
+        if (password_verify($user_password, $row_data['user_password'])) {
+            // echo "<script>alert('Login successful!')</script>";
+            if ($row_count == 1 and $row_count_cart == 0) {
+                $_SESSION['username'] = $user_username;
+                echo "<script>alert('Login successful!')</script>";
+                echo "<script>window.open('profile.php', '_self')</script>";
+            } else {
+                $_SESSION['username'] = $user_username;
+                echo "<script>alert('Login successful!')</script>";
+                echo "<script>window.open('payment.php', '_self')</script>";
+            }
         } else {
-            echo "<script>alert('Log in successful!')</script>";
+            echo "<script>alert('Invalid credentials')</script>";
         }
+    } else {
+        echo "<script>alert('Invalid credentials')</script>";
     }
+
+    // $row_count = mysqli_num_rows($result);
+    // if ($row_count == 0) {
+    //     echo "<script>alert('Error: Username not found!')</script>";
+    // } else {
+    //     $_SESSION['username']=$user_username;
+    //     $row_data = mysqli_fetch_assoc($result);
+    //     if (!password_verify($user_password, $row_data["user_password"])) {
+    //         echo "<script>alert('Error: Invalid password!')</script>";
+    //     } else {
+    //         echo "<script>alert('Log in successful!')</script>";
+    //     }
+    // }
 }
 ?>
