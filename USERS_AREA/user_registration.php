@@ -9,6 +9,7 @@ $user_username = $user_email = $user_contact = $user_password = '';
 if (isset($_POST['user_register'])) {
     $user_username = $_POST['user_username'];
     $user_password = $_POST['user_password'];
+    $hash_password = password_hash($user_password, PASSWORD_DEFAULT);
     $user_email = $_POST['user_email'];
     $user_contact = $_POST['user_contact'];
     $user_ip = getIPAddress();
@@ -40,7 +41,7 @@ if (isset($_POST['user_register'])) {
                 $user_email = htmlspecialchars($user_email);
                 $user_password = htmlspecialchars($user_password);
             } else {
-                $insert_query = "INSERT INTO `user_table` (username, user_password, user_email, user_ip, user_mobile) VALUES ('$user_username', '$user_password', '$user_email', '$user_ip', '$user_contact')";
+                $insert_query = "INSERT INTO `user_table` (username, user_password, user_email, user_ip, user_mobile) VALUES ('$user_username', '$hash_password', '$user_email', '$user_ip', '$user_contact')";
 
                 $sql_execute = mysqli_query($_con, $insert_query);
                 if ($sql_execute) {
