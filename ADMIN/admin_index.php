@@ -58,7 +58,8 @@ include ('../INCLUDES/connect.php');
                             categories</a></button>
                     <button><a href="admin_index.php?view_categories" class="nav-link text-dark bg-white my-2">View
                             categories</a></button>
-                    <button><a href="#" class="nav-link text-dark bg-white my-2">All orders</a></button>
+                    <button><a href="admin_index.php?list_orders" class="nav-link text-dark bg-white my-2">All
+                            orders</a></button>
                     <button><a href="#" class="nav-link text-dark bg-white my-2">Verified users</a></button>
                     <button><a href="#" class="nav-link text-dark bg-white my-2">Logout</a></button>
                 </div>
@@ -88,6 +89,9 @@ include ('../INCLUDES/connect.php');
         }
         if (isset($_GET['delete_categories'])) {
             include ('delete_categories.php');
+        }
+        if (isset($_GET['list_orders'])) {
+            include ('list_orders.php');
         }
         ?>
     </div>
