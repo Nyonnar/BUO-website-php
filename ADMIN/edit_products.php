@@ -27,9 +27,9 @@ if (isset($_GET['edit_products'])) {
                 class="form-control" required="required">
         </div>
         <div class="form-outline w-50 m-auto mb-4">
-            <label for="product_desc" class="form-label">Product Description</label>
-            <input type="text" id="product_desc" value="<?php echo $product_description ?>" name="product_desc"
-                class="form-control" required="required">
+            <label for="product_description" class="form-label">Product Description</label>
+            <input type="text" id="product_description" value="<?php echo $product_description ?>"
+                name="product_description" class="form-control" required="required">
         </div>
         <div class="form-outline w-50 m-auto mb-4">
             <label for="product_keywords" class="form-label">Product Keywords</label>
@@ -76,3 +76,42 @@ if (isset($_GET['edit_products'])) {
     </form>
 
 </div>
+
+
+<?php
+
+if (isset($_POST['edit_product'])) {
+    $product_title = $_POST['product_title'];
+    $product_description = $_POST['product_description'];
+    $product_keywords = $_POST['product_keywords'];
+    $product_category = $_POST['product_category'];
+    $product_price = $_POST['product_price'];
+
+    $product_image1 = $_FILES['product_image1']['name'];
+    $product_image2 = $_FILES['product_image2']['name'];
+
+    $temp_image1 = $_FILES['product_image1']['tmp_name'];
+    $temp_image2 = $_FILES['product_image2']['tmp_name'];
+
+    if (
+        $product_title == '' or $product_description == '' or $product_keywords == '' or
+        $product_category == '' or $product_price == '' or $product_image1 == '' or $product_image2 == ''
+    ) {
+        echo "<script>alert('Check all the fields')</script>";
+    } else {
+        move_uploaded_file($temp_image1, "./PRODUCT_IMAGES/$product_image1");
+        move_uploaded_file($temp_image2, "./PRODUCT_IMAGES/$product_image2");
+
+        $update_product = "UPDATE `products` SET product_title='$product_title',
+        product_description='$product_description', product_keywords='$product_keywords',
+        category_id='$product_category', product_image1='$product_image1', 
+        product_image2='$product_image2', product_price='$product_price', date=NOW()
+        WHERE product_id=$edit_id";
+        $result_update = mysqli_query($_con, $update_product);
+        if ($result_update) {
+            echo "<script>alert('Product updated sucessfully')</script>";
+            echo "<script>window.open('./insert_products.php', '_self')</script>";
+        }
+    }
+}
+?>
