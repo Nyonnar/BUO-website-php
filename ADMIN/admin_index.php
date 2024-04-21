@@ -65,8 +65,12 @@
         if (isset($_GET['insert_category'])) {
             include ('insert_categories.php');
         }
+        if (isset($_GET['view_products'])) {
+            include ('view_products.php');
+        }
         ?>
     </div>
+    
 
     <?php
     include('../INCLUDES/footer.php');
