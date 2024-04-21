@@ -41,7 +41,7 @@ if (isset($_GET['edit_products'])) {
             <label for="product_category" class="form-label">Product Category</label>
             <select name="product_category" class="form-select">
 
-                <option value="<?php echo $categories_title ?>"><?php echo $categories_title ?></option>
+                <option value="<?php echo $categories_title ?>">Select category</option>
                 <?php
                 $select_category_all = "SELECT * FROM `categories`";
                 $result_category_all = mysqli_query($_con, $select_category_all);
@@ -53,7 +53,6 @@ if (isset($_GET['edit_products'])) {
                 ?>
             </select>
         </div>
-
 
         <div class="form-outline w-50 m-auto mb-4">
             <label for="product_image1" class="form-label">image 1</label>
@@ -110,7 +109,7 @@ if (isset($_POST['edit_product'])) {
         $result_update = mysqli_query($_con, $update_product);
         if ($result_update) {
             echo "<script>alert('Product updated sucessfully')</script>";
-            echo "<script>window.open('./admin_index.php?view_products', '_self')</script>";
+            echo "<script>window.open('./admin_index.php', '_self')</script>";
         }
     }
 }
