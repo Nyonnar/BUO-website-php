@@ -2,6 +2,7 @@
 include ('../INCLUDES/connect.php');
 include ('../FUNCTIONS/common_function.php');
 
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,11 +75,10 @@ if (isset($_POST['user_login'])) {
     if ($row_count > 0) {
         $_SESSION['username'] = $user_username;
         if (password_verify($user_password, $row_data['user_password'])) {
-            // echo "<script>alert('Login successful!')</script>";
             if ($row_count == 1 and $row_count_cart == 0) {
                 $_SESSION['username'] = $user_username;
                 echo "<script>alert('Login successful!')</script>";
-                echo "<script>window.open('profile.php', '_self')</script>";
+                echo "<script>window.open('../index.php', '_self')</script>";
             } else {
                 $_SESSION['username'] = $user_username;
                 echo "<script>alert('Login successful!')</script>";
