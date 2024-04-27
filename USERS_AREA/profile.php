@@ -125,7 +125,7 @@ session_start();
                     </li>
 
                     <li class="nav-item bg-light">
-                        <a class="nav-link" href="#">Pending orders</a>
+                        <a class="nav-link" href="profile.php">Pending orders</a>
                     </li>
 
                     <li class="nav-item bg-light">
@@ -146,8 +146,12 @@ session_start();
 
                 </ul>
             </div>
-            <div class="col-md-10">
-                <?php get_user_order_details() ?>
+            <div class="col-md-10 text-center">
+                <?php get_user_order_details();
+                if (isset($_GET['edit_account'])) {
+                    include ('edit_account.php');
+                }
+                ?>
             </div>
         </div>
 
