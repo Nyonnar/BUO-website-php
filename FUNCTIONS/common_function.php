@@ -232,9 +232,11 @@ function get_user_order_details()
                     $result_orders_query = mysqli_query($_con, $get_orders);
                     $row_count = mysqli_num_rows($result_orders_query);
                     if ($row_count > 0) {
-                        echo "<h3 class='text-center'>You have <span class='text-danger'>$row_count</span> pending orders</h3>";
+                        echo "<h3 class='text-center'>You have <span class='text-danger'>$row_count</span> pending orders</h3>
+                        <p class='text-center'><a href='profile.php?my_orders' class='text-dark'>Order details</a></p>";
                     } else {
-                        echo "<h3 class='text-center'>You have no pending orders</h3>";
+                        echo "<h3 class='text-center'>You have no pending orders</h3>
+                        <p class='text-center'><a href='../index.php' class='text-dark'>Explore products</a></p>";
                     }
                 }
             }
